@@ -1,36 +1,52 @@
-﻿from fastapi import FastAPI
+﻿from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy.orm import Session
+from app.core.config import settings
+from app.core.database import engine, get_db, create_tables
+from app.models import base
+
+# Create tables on startup
+create_tables()
 
 app = FastAPI(
-    title="GSEF API",
-    description="Global Somali Entrepreneurship Forum",
-    version="1.0.0"
+    title=settings.APP_NAME,
+    version=settings.APP_VERSION,
+    debug=settings.DEBUG
 )
 
-# Configure CORS for frontend access
+# CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000"],
+    allow_origins=settings.CORS_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Root endpoint
 @app.get("/")
 def root():
     return {
         "message": "Welcome to GSEF API",
-        "status": "running",
-        "project": "Global Somali Entrepreneurship Forum"
+        "project": "Global Somali Entrepreneurship Forum",
+        "version": settings.APP_VERSION,
+        "status": "running"
     }
 
-# Health check endpoint
 @app.get("/health")
-def health_check():
-    return {"status": "healthy"}
+def health_check(db: Session = Depends(get_db)):
+    # Test database connection
+    try:
+        db.execute("SELECT 1")
+        db_status = "connected"
+    except:
+        db_status = "disconnected"
+    
+    return {
+        "status": "healthy",
+        "database": db_status,
+        "debug": settings.DEBUG
+    }
 
-# Test endpoint
 @app.get("/api/v1/test")
 def test():
     return {"message": "GSEF API is fully functional!"}
