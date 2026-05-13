@@ -1,0 +1,10 @@
+[33m1b8d064[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m feat: working GSEF backend API on port 8080
+[33mbae187e[m[33m ([m[1;31morigin/main[m[33m)[m fix: install all database dependencies and get server running
+[33m9c00b42[m fix: add missing sqlalchemy and psycopg2 dependencies
+[33m7156aae[m chore: update dependencies with auth packages
+[33mdaa7c24[m feat: integrate database with health check endpoint
+[33me4c3495[m feat: add database connection and session management
+[33m2e653a6[m feat: add database base model and user model
+[33mb87c4fd[m feat: add configuration management with pydantic settings
+[33m1ba848b[m feat: initialize GSEF backend FastAPI server
+[33m2dbaee3[m first commit
