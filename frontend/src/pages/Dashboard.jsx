@@ -1,13 +1,13 @@
-﻿import React from 'react';
-import { useAuth } from '../../contexts/AuthContext';
-import { FiUser, FiCalendar, FiTicket, FiTrendingUp } from 'react-icons/fi';
+import React from 'react';
+import { useAuth } from '../contexts/AuthContext';
+import { FiUser, FiCalendar, FiTag, FiTrendingUp } from 'react-icons/fi';
 
 const Dashboard = () => {
   const { user } = useAuth();
 
   const stats = [
     { label: 'Events Attended', value: '3', icon: FiCalendar, color: 'blue' },
-    { label: 'Tickets Purchased', value: '5', icon: FiTicket, color: 'green' },
+    { label: 'Tickets Purchased', value: '5', icon: FiTag, color: 'green' },
     { label: 'Network Connections', value: '28', icon: FiUser, color: 'purple' },
   ];
 
