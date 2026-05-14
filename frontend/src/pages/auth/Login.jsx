@@ -2,6 +2,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { FiMail, FiLock, FiLogIn } from 'react-icons/fi';
+import GsefLogo from '../../components/common/GsefLogo';
 
 const Login = () => {
   const { login } = useAuth();
@@ -19,10 +20,11 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4">
-      <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900">Welcome Back</h2>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-slate-100 to-white py-12 px-4">
+      <div className="max-w-md w-full bg-white rounded-2xl shadow-xl border border-slate-100 p-8">
+        <div className="flex flex-col items-center mb-8">
+          <GsefLogo asLink className="mb-4" />
+          <h2 className="text-3xl font-bold text-gsef-navy">Welcome Back</h2>
           <p className="text-gray-600 mt-2">Sign in to your GSEF account</p>
         </div>
 
@@ -35,7 +37,7 @@ const Login = () => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-gsef-teal focus:border-gsef-teal"
                 placeholder="you@example.com"
                 required
               />
@@ -50,7 +52,7 @@ const Login = () => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-gsef-teal focus:border-gsef-teal"
                 placeholder="••••••••"
                 required
               />
@@ -60,7 +62,7 @@ const Login = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition flex items-center justify-center gap-2"
+            className="w-full bg-gsef-teal text-white py-2.5 rounded-xl hover:bg-gsef-tealBright transition flex items-center justify-center gap-2 font-semibold shadow-md"
           >
             <FiLogIn /> {loading ? 'Signing in...' : 'Sign In'}
           </button>
@@ -68,7 +70,7 @@ const Login = () => {
 
         <p className="text-center text-gray-600 mt-6">
           Don't have an account?{' '}
-          <Link to="/register" className="text-blue-600 hover:underline">Create one</Link>
+          <Link to="/register" className="text-gsef-teal hover:text-gsef-purple font-semibold">Create one</Link>
         </p>
       </div>
     </div>

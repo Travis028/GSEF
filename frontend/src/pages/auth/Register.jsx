@@ -2,6 +2,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { FiMail, FiLock, FiUser, FiUserPlus } from 'react-icons/fi';
+import GsefLogo from '../../components/common/GsefLogo';
 
 const Register = () => {
   const { register: registerUser } = useAuth();
@@ -25,10 +26,11 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4">
-      <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900">Create Account</h2>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-slate-100 to-white py-12 px-4">
+      <div className="max-w-md w-full bg-white rounded-2xl shadow-xl border border-slate-100 p-8">
+        <div className="flex flex-col items-center mb-8">
+          <GsefLogo asLink className="mb-4" />
+          <h2 className="text-3xl font-bold text-gsef-navy">Create Account</h2>
           <p className="text-gray-600 mt-2">Join the GSEF community</p>
         </div>
 
@@ -77,7 +79,7 @@ const Register = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition flex items-center justify-center gap-2"
+            className="w-full bg-gradient-to-r from-gsef-orange to-gsef-purple text-white py-2.5 rounded-xl hover:opacity-95 transition flex items-center justify-center gap-2 font-semibold shadow-md"
           >
             <FiUserPlus /> {loading ? 'Creating...' : 'Create Account'}
           </button>
@@ -85,7 +87,7 @@ const Register = () => {
 
         <p className="text-center text-gray-600 mt-6">
           Already have an account?{' '}
-          <Link to="/login" className="text-blue-600 hover:underline">Sign In</Link>
+          <Link to="/login" className="text-gsef-teal hover:text-gsef-purple font-semibold">Sign In</Link>
         </p>
       </div>
     </div>

@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiCalendar, FiMapPin, FiUsers } from 'react-icons/fi';
+import { GsefMark } from '../components/common/GsefLogo';
 
 const Events = () => {
   const events = [
@@ -37,18 +38,21 @@ const Events = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white py-12">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Upcoming Events</h1>
-          <p className="text-xl text-gray-600">Join the largest gatherings of Somali entrepreneurs</p>
+        <div className="flex flex-col items-center text-center mb-12">
+          <GsefMark size={52} className="mb-4 drop-shadow-sm" />
+          <h1 className="text-4xl font-bold text-gsef-navy mb-3">Upcoming Events</h1>
+          <p className="text-xl text-slate-600 max-w-2xl">Join the largest gatherings of Somali entrepreneurs</p>
+          <Link to="/gallery" className="mt-4 text-sm font-semibold text-gsef-teal hover:text-gsef-purple transition">Browse event gallery →</Link>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {events.map((event) => (
             <div key={event.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition">
               <div className="p-6">
-                <div className="inline-block px-3 py-1 bg-blue-100 text-blue-600 text-xs rounded-full mb-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-gsef-teal/15 text-gsef-teal text-xs font-semibold rounded-full mb-4">
+                  <GsefMark size={18} />
                   {event.status === 'upcoming' ? 'UPCOMING' : 'PAST'}
                 </div>
                 <h2 className="text-2xl font-bold mb-2">{event.title}</h2>
@@ -66,7 +70,7 @@ const Events = () => {
                 </div>
                 <Link
                   to={`/events/${event.id}`}
-                  className="block w-full bg-blue-600 text-white text-center px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+                  className="block w-full bg-gsef-teal text-white text-center px-4 py-2.5 rounded-xl hover:bg-gsef-tealBright transition font-semibold shadow"
                 >
                   View Details
                 </Link>
