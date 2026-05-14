@@ -1,16 +1,47 @@
-# React + Vite
+# GSEF Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This directory contains the user interface for the GSEF platform, built with React and Vite.
 
-Currently, two official plugins are available:
+## Tech Stack
+- **React 19**: Modern UI component library.
+- **Vite**: Ultra-fast build tool and development server.
+- **TailwindCSS**: Utility-first CSS framework for rapid styling.
+- **React Router DOM**: Client-side routing for seamless navigation.
+- **React Query**: Asynchronous state management and data fetching.
+- **Framer Motion**: For fluid animations and page transitions.
+- **React Icons**: Scalable vector icons.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features & Pages
+- **Public Pages:**
+  - `Home`: Landing page with dynamic countdown, hero section, and membership plans.
+  - `Events`: Directory of upcoming summits and workshops.
+  - `EventDetail`: In-depth view of event agendas and speakers.
+  - `Registration`: Multi-step ticket purchasing flow.
+- **User Portal:**
+  - `Dashboard`: User-specific metrics and upcoming registered events.
+- **Admin Portal:**
+  - `AdminLayout` & `AdminDashboard`: Protected routes exclusively for platform organizers.
+  - `AdminEvents` & `AdminUsers`: Data tables for entity management.
 
-## React Compiler
+## Setup & Execution
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
 
-## Expanding the ESLint configuration
+2. **Run Development Server:**
+   ```bash
+   npm run dev
+   ```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+3. **Build for Production:**
+   ```bash
+   npm run build
+   ```
+
+## Environment Variables
+Create a `.env` file in this directory based on the following template:
+```env
+VITE_API_URL=http://localhost:8000/api
+```
