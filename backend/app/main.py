@@ -1,20 +1,13 @@
 ﻿from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-# Create database tables (simplified for now)
-from app.core.database import engine, Base
-from app.models import User, Event
-
-# Create tables
-Base.metadata.create_all(bind=engine)
-
 app = FastAPI(
     title="GSEF API",
-    version="1.0.0",
-    description="Global Somali Entrepreneurship Forum API"
+    description="Global Somali Entrepreneurship Forum",
+    version="1.0.0"
 )
 
-# CORS middleware
+# Configure CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -23,18 +16,26 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Simple event endpoints without complex imports
 @app.get("/")
 def root():
-    return {"message": "Welcome to GSEF API", "status": "running"}
+    return {
+        "message": "Welcome to GSEF API",
+        "status": "running",
+        "project": "Global Somali Entrepreneurship Forum"
+    }
 
 @app.get("/health")
 def health():
     return {"status": "healthy"}
 
+@app.get("/api/v1/test")
+def test():
+    return {"message": "API is working!"}
+
+# Placeholder for events
 @app.get("/api/v1/events")
 def get_events():
-    return {"message": "Events endpoint - coming soon"}
+    return {"message": "Events endpoint - coming soon", "events": []}
 
 @app.get("/api/v1/events/upcoming")
 def get_upcoming():
