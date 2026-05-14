@@ -1,0 +1,30 @@
+[33ma71d6dfc[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m chore: working server with database models ready
+[33m0bbe5c5c[m feat: add User database model with base model
+[33m52e48ebc[m[33m ([m[1;31morigin/main[m[33m)[m feat: add configuration management with pydantic-settings
+[33ma5404d81[m feat: working minimal FastAPI server with health check
+[33m1cf9d4e9[m chore: save current state before cleanup
+[33m2216bf42[m fix: working GSEF backend with simplified routes
+[33mfdafc622[m feat: complete API endpoints for GSEF
+[33m7f53de20[m feat: add complete database models and API endpoints
+[33m1b8d0645[m feat: working GSEF backend API on port 8080
+[33mbae187eb[m fix: install all database dependencies and get server running
+[33m5637743d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m feat: complete frontend with API services, AuthContext, and Home page
+[33m2b58dbd5[m feat: initialize React frontend with Vite
+[33ma71d6dfc[m chore: working server with database models ready
+[33m0bbe5c5c[m feat: add User database model with base model
+[33m52e48ebc[m feat: add configuration management with pydantic-settings
+[33ma5404d81[m feat: working minimal FastAPI server with health check
+[33m1cf9d4e9[m chore: save current state before cleanup
+[33m2216bf42[m fix: working GSEF backend with simplified routes
+[33mfdafc622[m feat: complete API endpoints for GSEF
+[33m7f53de20[m feat: add complete database models and API endpoints
+[33m1b8d0645[m feat: working GSEF backend API on port 8080
+[33mbae187eb[m fix: install all database dependencies and get server running
+[33m9c00b420[m fix: add missing sqlalchemy and psycopg2 dependencies
+[33m7156aae1[m chore: update dependencies with auth packages
+[33mdaa7c24e[m feat: integrate database with health check endpoint
+[33me4c34956[m feat: add database connection and session management
+[33m2e653a61[m feat: add database base model and user model
+[33mb87c4fd7[m feat: add configuration management with pydantic settings
+[33m1ba848b8[m feat: initialize GSEF backend FastAPI server
+[33m2dbaee38[m first commit

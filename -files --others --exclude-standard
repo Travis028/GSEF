@@ -1,0 +1,10 @@
+[33ma71d6dfc[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m chore: working server with database models ready
+[33m0bbe5c5c[m feat: add User database model with base model
+[33m52e48ebc[m[33m ([m[1;31morigin/main[m[33m)[m feat: add configuration management with pydantic-settings
+[33ma5404d81[m feat: working minimal FastAPI server with health check
+[33m1cf9d4e9[m chore: save current state before cleanup
+[33m2216bf42[m fix: working GSEF backend with simplified routes
+[33mfdafc622[m feat: complete API endpoints for GSEF
+[33m7f53de20[m feat: add complete database models and API endpoints
+[33m1b8d0645[m feat: working GSEF backend API on port 8080
+[33mbae187eb[m fix: install all database dependencies and get server running
