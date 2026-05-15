@@ -2,35 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 /**
- * GSEF mark: four interlocking rounded tiles (blue, purple, gold, forest green)
- * inspired by the official-style geometric “G / knot” lockup.
- */
-export function GsefMark({ size = 44, className = '' }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 48 48"
-      className={className}
-      aria-hidden="true"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect x="3" y="3" width="20" height="20" rx="6" fill="#1565C0" />
-      <rect x="25" y="3" width="20" height="20" rx="6" fill="#6A1B9A" />
-      <rect x="3" y="25" width="20" height="20" rx="6" fill="#0B7A58" />
-      <rect x="25" y="25" width="20" height="20" rx="6" fill="#F9A825" />
-      <rect x="17" y="17" width="14" height="14" rx="4" fill="#ffffff" fillOpacity="0.92" />
-      <path
-        d="M24 20c2.2 0 4 1.8 4 4v4h-4c-1.1 0-2-.9-2-2v-2c0-1.1.9-2 2-2z"
-        fill="#0B162C"
-        fillOpacity="0.08"
-      />
-    </svg>
-  );
-}
-
-/**
- * Full wordmark for headers / footers
+ * GSEF Logo component that uses the uploaded image
  * @param {'light'|'dark'} theme — dark: light text on navy backgrounds
  */
 export default function GsefLogo({
@@ -44,18 +16,25 @@ export default function GsefLogo({
   const titleClass =
     theme === 'dark'
       ? 'text-white'
-      : 'text-gsef-navy';
+      : 'text-navy';
   const taglineClass =
     theme === 'dark'
-      ? 'text-slate-300'
-      : 'text-slate-500';
+      ? 'text-white/70'
+      : 'text-gray-500';
   const iconSize = compact ? 36 : 44;
 
   const content = (
     <>
-      <GsefMark size={iconSize} className="shrink-0 drop-shadow-sm" />
+      <img 
+        src="/images/gsef-logo.png" 
+        alt="GSEF Logo" 
+        width={iconSize}
+        height={iconSize}
+        className="shrink-0 object-contain drop-shadow-sm" 
+        style={{ width: iconSize, height: iconSize }}
+      />
       <div className="leading-tight min-w-0 text-left">
-        <span className={`block font-bold tracking-tight ${compact ? 'text-lg' : 'text-xl'} ${titleClass}`}>
+        <span className={`block font-display font-bold tracking-tight ${compact ? 'text-lg' : 'text-xl'} ${titleClass}`}>
           GSEF
         </span>
         {showTagline && (

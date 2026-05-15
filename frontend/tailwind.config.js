@@ -24,9 +24,25 @@ export default {
         },
         teal: {
           DEFAULT: '#17A589',
+          light: '#20B2AA',
+          dark: '#0E6454',
+        },
+        orange: {
+          DEFAULT: '#F97316',
+          light: '#FFA07A',
+        },
+        purple: {
+          DEFAULT: '#8B5CF6',
+          dark: '#6D28D9',
+          light: '#C7B8EA',
+        },
+        blue: {
+          DEFAULT: '#3B82F6',
+          light: '#87CEEB',
         },
         red: {
           DEFAULT: '#C0392B',
+          light: '#FFC0CB',
         },
         offwhite: '#F8F7F4',
       },

@@ -29,6 +29,11 @@ def authenticate_user(db: Session, email: str, password: str):
 
 def create_user(db: Session, user: UserCreate):
     hashed_password = get_password_hash(user.password)
+    
+    # Check if this is the first user in the database
+    user_count = db.query(User).count()
+    assigned_role = "admin" if user_count == 0 else "attendee"
+    
     db_user = User(
         email=user.email,
         password_hash=hashed_password,
@@ -37,7 +42,8 @@ def create_user(db: Session, user: UserCreate):
         phone=user.phone,
         company=user.company,
         position=user.position,
-        country=user.country
+        country=user.country,
+        role=assigned_role
     )
     db.add(db_user)
     db.commit()
