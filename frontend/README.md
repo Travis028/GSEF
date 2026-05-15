@@ -1,47 +1,59 @@
-# GSEF Frontend
+# Remindly
 
-This directory contains the user interface for the GSEF platform, built with React and Vite.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.10.
 
-## Tech Stack
-- **React 19**: Modern UI component library.
-- **Vite**: Ultra-fast build tool and development server.
-- **TailwindCSS**: Utility-first CSS framework for rapid styling.
-- **React Router DOM**: Client-side routing for seamless navigation.
-- **React Query**: Asynchronous state management and data fetching.
-- **Framer Motion**: For fluid animations and page transitions.
-- **React Icons**: Scalable vector icons.
+## Development server
 
-## Features & Pages
-- **Public Pages:**
-  - `Home`: Landing page with dynamic countdown, hero section, and membership plans.
-  - `Events`: Directory of upcoming summits and workshops.
-  - `EventDetail`: In-depth view of event agendas and speakers.
-  - `Registration`: Multi-step ticket purchasing flow.
-- **User Portal:**
-  - `Dashboard`: User-specific metrics and upcoming registered events.
-- **Admin Portal:**
-  - `AdminLayout` & `AdminDashboard`: Protected routes exclusively for platform organizers.
-  - `AdminEvents` & `AdminUsers`: Data tables for entity management.
+To start a local development server, run:
 
-## Setup & Execution
-
-1. **Install Dependencies:**
-   ```bash
-   npm install
-   ```
-
-2. **Run Development Server:**
-   ```bash
-   npm run dev
-   ```
-
-3. **Build for Production:**
-   ```bash
-   npm run build
-   ```
-
-## Environment Variables
-Create a `.env` file in this directory based on the following template:
-```env
-VITE_API_URL=http://localhost:8000/api
+```bash
+ng serve
 ```
+
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+
+## Code scaffolding
+
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+
+```bash
+ng generate component component-name
+```
+
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+
+```bash
+ng generate --help
+```
+
+## Building
+
+To build the project run:
+
+```bash
+ng build
+```
+
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Running unit tests
+
+To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
