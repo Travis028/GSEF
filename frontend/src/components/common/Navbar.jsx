@@ -49,7 +49,7 @@ const Navbar = () => {
               <Link 
                 key={link.name} 
                 to={link.path} 
-                className={`font-body text-sm font-medium transition-colors ${!isTransparent ? 'text-gray-600 hover:text-green' : 'text-white/90 hover:text-gold'}`}
+                className={`font-body text-sm font-semibold transition-colors ${!isTransparent ? 'text-navy hover:text-green' : 'text-white hover:text-gold'}`}
               >
                 {link.name}
               </Link>
@@ -58,10 +58,10 @@ const Navbar = () => {
 
           {/* Desktop Buttons */}
           <div className="hidden xl:flex items-center space-x-4">
-            <Link to="/login" className={`font-body text-sm font-semibold transition-colors ${!isTransparent ? 'text-gray-800 hover:text-green' : 'text-white hover:text-gold'}`}>
+            <Link to="/login" className={`font-body text-sm font-bold transition-colors ${!isTransparent ? 'text-navy hover:text-green' : 'text-white hover:text-gold'}`}>
               Login
             </Link>
-            <Link to="/register" className="bg-green text-white px-5 py-2 rounded-full font-body text-sm font-semibold hover:bg-green-light transform hover:-translate-y-0.5 transition-all">
+            <Link to="/register" className="bg-green text-white px-5 py-2.5 rounded-full font-body text-sm font-bold hover:bg-green-light shadow-md transform hover:-translate-y-0.5 transition-all">
               Register / Buy Ticket
             </Link>
           </div>
