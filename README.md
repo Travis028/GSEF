@@ -1,51 +1,65 @@
 # Global Somali Entrepreneurship Forum (GSEF) Platform
 
-Welcome to the official repository for the GSEF Platform. This platform is designed to connect Somali entrepreneurs, investors, and innovators globally, facilitating events, ticketing, networking, and membership access.
+Welcome to the GSEF platform repository. This project combines a frontend event platform and a backend API for managing events, users, registrations, and membership workflows.
 
 ## Project Overview
 
-The platform provides a modern, premium web interface for users to discover events, register for summits, and manage their profiles. It also includes a robust Admin Dashboard for organizers to manage users, track event registrations, and monitor revenue.
-
-### Key Features
-- **Public Portal:** Modern landing pages, dynamic event details, and secure ticket registration flows.
-- **Admin Dashboard:** Role-based access control, analytics overview, event management, and user management.
-- **Authentication:** JWT-based secure authentication system for users and administrators.
-- **Responsive Design:** Fully responsive layout optimized for mobile, tablet, and desktop viewing.
+GSEF is designed to connect Somali entrepreneurs, investors, and community members through a premium event experience. It includes:
+- Event discovery and registration
+- Speaker and schedule management
+- Membership tiers and newsletter subscription
+- Admin dashboard support
+- Modern responsive UI with a clean brand design
 
 ## Architecture
 
-This project is built using a modern full-stack architecture:
+This repository contains two main application layers:
+- `/frontend`: React + Vite + TailwindCSS application
+- `/backend`: FastAPI + SQLAlchemy REST API
 
-- **Frontend:** React 19 + Vite + TailwindCSS
-- **Backend:** Python + FastAPI + SQLAlchemy
-- **Database:** SQLite (Development) / PostgreSQL (Production ready)
+## UI Theme and Brand Colors
 
-## Directory Structure
+The frontend uses the GSEF brand palette to match the logo and visual identity:
+- **Green:** `#006B3F`
+- **Gold:** `#C9A84C`
+- **Navy:** `#1A1A2E`
+- **Teal:** `#17A589`
+- **Offwhite:** `#F8F7F4`
 
-- `/frontend`: Contains the React/Vite web application.
-- `/backend`: Contains the FastAPI REST API and database models.
+## Setup and Run
 
-## Getting Started
-
-To run this project locally, you will need to run both the backend and frontend servers simultaneously.
-
-### 1. Starting the Backend
+### Backend
 ```bash
 cd backend
 python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
+source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
+python run.py
 ```
+The backend runs on `http://localhost:8080` and exposes API routes under `/api`.
 
-### 2. Starting the Frontend
+### Frontend
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
+The frontend runs on `http://localhost:5173`.
 
-The application will be accessible at `http://localhost:5173` (or whichever port Vite assigns), and the backend API documentation at `http://localhost:8000/docs`.
+### Notes
+- The backend code belongs in `/backend`.
+- The frontend code belongs in `/frontend`.
+- If you are maintaining separate repositories, ensure the backend remains in `GSEF-backend-` and the frontend in `GSEF`.
+
+## Quick Links
+- Frontend URL: `http://localhost:5173`
+- Backend health: `http://localhost:8080/health`
+- Backend docs: `http://localhost:8080/docs`
+
+## Directory Structure
+
+- `/backend`: API server, models, schemas, services
+- `/frontend`: UI code, pages, components, styles
 
 ## License
 Copyright 2026 GSEF. All rights reserved.

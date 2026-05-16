@@ -1,49 +1,70 @@
 # GSEF Backend API
 
-This directory contains the RESTful API for the GSEF platform, providing the data layer, authentication logic, and administrative endpoints.
+This directory contains the FastAPI backend for the GSEF platform. It provides REST endpoints for events, users, registrations, memberships, speakers, gallery, newsletters, and admin management.
 
 ## Tech Stack
-- **Python 3.12+**: Core programming language.
-- **FastAPI**: Extremely fast and modern web framework for building APIs.
-- **SQLAlchemy**: Powerful SQL toolkit and Object-Relational Mapper (ORM).
-- **Pydantic**: Data validation and settings management using Python type annotations.
-- **Uvicorn**: Lightning-fast ASGI server.
-- **Passlib & JWT**: Secure password hashing and token-based authentication.
+- **Python 3.12+**
+- **FastAPI**
+- **SQLAlchemy**
+- **Pydantic**
+- **Uvicorn**
+- **JWT / Passlib**
 
-## System Architecture
-- `app/api/`: Contains route definitions for `auth`, `users`, `events`, and `admin`.
-- `app/core/`: Contains core configurations, JWT security parameters, and database session logic.
-- `app/models/`: Contains the SQLAlchemy ORM models (`User`, `Event`, etc.).
-- `app/schemas/`: Contains the Pydantic models for request validation and response serialization.
+## Project Structure
+- `app/api/`: API route definitions
+- `app/core/`: Database setup and configuration
+- `app/models/`: SQLAlchemy models
+- `app/schemas/`: Pydantic request/response schemas
+- `app/services/`: Business logic helpers
 
-## Key Endpoints
-- `POST /api/auth/login`: Issue JWT access tokens.
-- `GET /api/events`: Retrieve list of events.
-- `GET /api/admin/dashboard/stats`: Retrieve high-level statistics (Requires Admin Role).
+## Important Endpoints
+- `GET /health`
+- `GET /api/events`
+- `GET /api/events/{id}`
+- `GET /api/speakers`
+- `GET /api/gallery`
+- `GET /api/reports`
+- `GET /api/schedule/event/{event_id}`
+- `GET /api/sponsors`
+- `GET /api/memberships`
+- `POST /api/newsletter/subscribe`
+- `POST /api/auth/login`
 
-## Setup & Execution
+## Setup & Run
 
-1. **Create Virtual Environment:**
+1. Create and activate a Python virtual environment:
    ```bash
+   cd backend
    python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   source venv/bin/activate
    ```
 
-2. **Install Dependencies:**
+2. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Run Development Server:**
+3. Start the backend server:
    ```bash
-   uvicorn app.main:app --reload --port 8000
+   python run.py
    ```
 
+The backend server uses port `8080` by default and is available at `http://localhost:8080`.
+
+## Database
+- The default development database is SQLite at `backend/gsef.db`.
+- The application creates required tables automatically on startup.
+- Use `backend/seed_images.py` to seed sample event data.
+
 ## Environment Variables
-Create a `.env` file in this directory based on the following template:
+Create a `.env` file in the backend folder if needed:
 ```env
 DATABASE_URL=sqlite:///./gsef.db
-SECRET_KEY=your_super_secret_key_here
+SECRET_KEY=super_secret_key_here
 ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=30
 ```
+
+## Notes
+- Keep backend code in the `backend` folder.
+- The frontend is separate and should connect to `http://localhost:8080/api`.
