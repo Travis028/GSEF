@@ -11,6 +11,7 @@ export default function GsefLogo({
   theme = 'light',
   showTagline = true,
   compact = false,
+  size,
   className = '',
 }) {
   const titleClass =
@@ -21,7 +22,7 @@ export default function GsefLogo({
     theme === 'dark'
       ? 'text-white/70'
       : 'text-gray-500';
-  const iconSize = compact ? 36 : 44;
+  const iconSize = size || (compact ? 36 : 44);
 
   const content = (
     <>
@@ -59,3 +60,5 @@ export default function GsefLogo({
   }
   return <div className={boxClass}>{content}</div>;
 }
+
+export const GsefMark = GsefLogo;

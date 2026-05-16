@@ -11,7 +11,7 @@ router = APIRouter(prefix="/events", tags=["Events"])
 def get_events(
     skip: int = 0,
     limit: int = 100,
-    status: Optional[str] = Query(None, regex="^(upcoming|ongoing|completed)$"),
+    status: Optional[str] = Query(None, pattern="^(upcoming|ongoing|completed)$"),
     featured: Optional[bool] = None,
     db: Session = Depends(get_db)
 ):
