@@ -18,14 +18,25 @@ import Registration from './pages/Registration';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
+import AdminLayout from './layouts/AdminLayout';
 import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminEvents from './pages/admin/AdminEvents';
+import AdminCheckins from './pages/admin/AdminCheckins';
+import AdminReports from './pages/admin/AdminReports';
+import AdminGallery from './pages/admin/AdminGallery';
+import AdminFeedback from './pages/admin/AdminFeedback';
+import AdminTraining from './pages/admin/AdminTraining';
+import AdminUsers from './pages/admin/AdminUsers';
+import AdminSettings from './pages/admin/AdminSettings';
+import Activities from './pages/Activities';
+import Companies from './pages/Companies';
 
 function App() {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen bg-offwhite">
+      <div className="flex flex-col min-h-screen bg-gradient-to-b from-offwhite via-white to-slate-100">
         <Navbar />
-        <main className="flex-grow">
+        <main className="flex-grow pt-[5.5rem]">
           <Routes>
             {/* Public Pages */}
             <Route path="/" element={<Home />} />
@@ -37,6 +48,8 @@ function App() {
             <Route path="/training" element={<Training />} />
             <Route path="/membership" element={<Membership />} />
             <Route path="/founders" element={<Founders />} />
+            <Route path="/activities" element={<Activities />} />
+            <Route path="/companies" element={<Companies />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/contact" element={<Contact />} />
             
@@ -50,7 +63,17 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             
             {/* Admin Pages */}
-            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<AdminDashboard />} />
+              <Route path="events" element={<AdminEvents />} />
+              <Route path="check-ins" element={<AdminCheckins />} />
+              <Route path="reports" element={<AdminReports />} />
+              <Route path="gallery" element={<AdminGallery />} />
+              <Route path="feedback" element={<AdminFeedback />} />
+              <Route path="training" element={<AdminTraining />} />
+              <Route path="users" element={<AdminUsers />} />
+              <Route path="settings" element={<AdminSettings />} />
+            </Route>
           </Routes>
         </main>
         <Footer />

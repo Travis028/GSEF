@@ -11,9 +11,34 @@ const AdminDashboard = () => {
 
   return (
     <div className="space-y-6 sm:space-y-8">
-      <div>
-        <h2 className="text-xl sm:text-2xl font-bold text-gsef-navy">Dashboard overview</h2>
-        <p className="text-sm text-slate-600 mt-1">Responsive admin cards — ready to wire to your analytics endpoints.</p>
+      <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div>
+            <h2 className="text-xl sm:text-2xl font-bold text-gsef-navy">Dashboard overview</h2>
+            <p className="text-sm text-slate-600 mt-1">Responsive admin cards — ready to wire to your analytics endpoints.</p>
+          </div>
+          <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-700">
+            <span className="h-2.5 w-2.5 rounded-full bg-gsef-teal" /> Live data sync enabled
+          </div>
+        </div>
+
+        <div className="mt-6 grid gap-3 sm:grid-cols-3">
+          <div className="rounded-3xl bg-gsef-navy/5 p-4">
+            <p className="text-xs uppercase tracking-[0.24em] text-slate-500">Next event</p>
+            <p className="mt-2 font-semibold text-slate-900">GSEF Nairobi 2026</p>
+            <p className="mt-1 text-sm text-slate-500">Planning review due in 4 days</p>
+          </div>
+          <div className="rounded-3xl bg-gsef-purple/5 p-4">
+            <p className="text-xs uppercase tracking-[0.24em] text-slate-500">Pending approvals</p>
+            <p className="mt-2 font-semibold text-slate-900">16 requests</p>
+            <p className="mt-1 text-sm text-slate-500">Speakers, sponsors, media passes</p>
+          </div>
+          <div className="rounded-3xl bg-gsef-teal/5 p-4">
+            <p className="text-xs uppercase tracking-[0.24em] text-slate-500">New leads</p>
+            <p className="mt-2 font-semibold text-slate-900">247</p>
+            <p className="mt-1 text-sm text-slate-500">Visitor registrations since yesterday</p>
+          </div>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6">

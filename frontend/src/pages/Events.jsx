@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiCalendar, FiMapPin, FiUsers } from 'react-icons/fi';
+import SiteHero from '../components/common/SiteHero';
 import { GsefMark } from '../components/common/GsefLogo';
 
 const Events = () => {
@@ -38,16 +39,16 @@ const Events = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white py-12">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex flex-col items-center text-center mb-12">
-          <GsefMark size={52} className="mb-4 drop-shadow-sm" />
-          <h1 className="text-4xl font-bold text-gsef-navy mb-3">Upcoming Events</h1>
-          <p className="text-xl text-slate-600 max-w-2xl">Join the largest gatherings of Somali entrepreneurs</p>
-          <Link to="/gallery" className="mt-4 text-sm font-semibold text-gsef-teal hover:text-gsef-purple transition">Browse event gallery →</Link>
-        </div>
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white pb-16">
+      <SiteHero
+        eyebrow="Experience"
+        title="Events"
+        description="Clear event cards, polished details, and consistent branding for every summit stage — responsive from mobile to widescreen."
+        filters={<Link to="/gallery" className="rounded-full bg-gsef-teal px-4 py-2 text-sm font-semibold text-white hover:bg-gsef-tealBright transition">Browse gallery</Link>}
+      />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 -mt-6 pb-16">
           {events.map((event) => (
             <div key={event.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition">
               <div className="p-6">

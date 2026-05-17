@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Outlet, Navigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import AdminSidebar from '../components/admin/AdminSidebar';
-import { FiLogOut, FiMenu } from 'react-icons/fi';
+import { FiLogOut } from 'react-icons/fi';
 
 const AdminLayout = () => {
   const { user, isAuthenticated, logout } = useAuth();
-  const [mobileOpen, setMobileOpen] = useState(false);
 
   const adminPreview = import.meta.env.VITE_ALLOW_ADMIN_PREVIEW === 'true';
 
@@ -37,51 +36,19 @@ const AdminLayout = () => {
 
   return (
     <div className="flex min-h-screen bg-slate-100 text-slate-900">
-      {/* Desktop sidebar */}
-      <aside className="hidden lg:block w-64 shrink-0">
-        <AdminSidebar onNavigate={() => setMobileOpen(false)} />
+      <aside className="hidden lg:block w-72 shrink-0">
+        <AdminSidebar />
       </aside>
 
-      {/* Mobile drawer */}
-      <div
-        className={`fixed inset-0 z-40 lg:hidden transition ${mobileOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
-        aria-hidden={!mobileOpen}
-      >
-        <button
-          type="button"
-          className={`absolute inset-0 bg-black/50 transition ${mobileOpen ? 'opacity-100' : 'opacity-0'}`}
-          onClick={() => setMobileOpen(false)}
-        />
-        <div
-          className={`absolute left-0 top-0 h-full w-[min(88vw,320px)] bg-gsef-navy shadow-2xl transition-transform ${
-            mobileOpen ? 'translate-x-0' : '-translate-x-full'
-          }`}
-        >
-          <AdminSidebar onNavigate={() => setMobileOpen(false)} />
-        </div>
-      </div>
-
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="sticky top-0 z-30 flex h-14 sm:h-16 items-center gap-3 border-b border-slate-200 bg-white/90 px-3 sm:px-5 backdrop-blur">
-          <button
-            type="button"
-            className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-800 hover:bg-slate-50"
-            aria-label="Open menu"
-            onClick={() => setMobileOpen(true)}
-          >
-            <FiMenu />
-          </button>
-
-          <div className="flex-1 min-w-0">
-            <h1 className="text-sm sm:text-lg font-bold text-gsef-navy truncate">GSEF Admin</h1>
-            <p className="hidden sm:block text-xs text-slate-500 truncate">Manage events, media, training, and settings</p>
+        <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-slate-200 bg-white/95 px-5 shadow-sm">
+          <div>
+            <h1 className="text-base font-bold text-gsef-navy">GSEF Admin</h1>
+            <p className="text-xs text-slate-500">Manage events, media, training, and settings</p>
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            <span className="hidden sm:inline text-xs font-semibold text-slate-600 max-w-[10rem] truncate">
-              {user?.names || user?.email || 'Admin'}
-            </span>
-            <Link to="/" className="hidden sm:inline-flex text-xs font-semibold text-gsef-teal hover:text-gsef-purple">
+          <div className="flex items-center gap-3">
+            <Link to="/" className="text-xs font-semibold text-gsef-teal hover:text-gsef-purple">
               View site
             </Link>
             <button
@@ -90,12 +57,12 @@ const AdminLayout = () => {
               className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-bold text-slate-800 hover:bg-slate-50"
             >
               <FiLogOut />
-              <span className="hidden sm:inline">Logout</span>
+              <span>Logout</span>
             </button>
           </div>
         </header>
 
-        <main className="flex-1 overflow-y-auto p-3 sm:p-5 lg:p-6">
+        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
           <Outlet />
         </main>
       </div>

@@ -20,12 +20,13 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-slate-100 to-white py-12 px-4">
-      <div className="max-w-md w-full bg-white rounded-2xl shadow-xl border border-slate-100 p-8">
+    <div className="min-h-screen flex items-center justify-center bg-[radial-gradient(circle_at_top,_rgba(23,165,137,0.14),transparent_34%),linear-gradient(180deg,#f7f6f3_0%,#ffffff_48%,#eef4f9_100%)] py-12 px-4">
+      <div className="max-w-md w-full bg-white/95 backdrop-blur-xl rounded-[2rem] shadow-2xl border border-slate-200 p-8">
         <div className="flex flex-col items-center mb-8">
           <GsefLogo asLink className="mb-4" />
+          <span className="rounded-full bg-gsef-navy/10 text-gsef-navy px-4 py-1 text-xs uppercase tracking-[0.25em] font-semibold mb-4">Secure login</span>
           <h2 className="text-3xl font-bold text-gsef-navy">Welcome Back</h2>
-          <p className="text-gray-600 mt-2">Sign in to your GSEF account</p>
+          <p className="text-slate-500 mt-2 text-center">Sign in to the Global Somali Entrepreneurship Forum portal.</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -62,7 +63,7 @@ const Login = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-gsef-teal text-white py-2.5 rounded-xl hover:bg-gsef-tealBright transition flex items-center justify-center gap-2 font-semibold shadow-md"
+            className="w-full bg-gsef-teal text-white py-3 rounded-2xl hover:bg-gsef-tealBright transition flex items-center justify-center gap-2 font-semibold shadow-xl shadow-gsef-teal/20"
           >
             <FiLogIn /> {loading ? 'Signing in...' : 'Sign In'}
           </button>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FiFacebook, FiGlobe, FiInstagram, FiLinkedin } from 'react-icons/fi';
 
 const Footer = () => {
   return (
@@ -52,24 +53,48 @@ const Footer = () => {
           <div>
             <h4 className="font-display text-[20px] font-bold text-white mb-5">Follow Us</h4>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-400 hover:bg-gold hover:text-navy transition-all">
-                𝕏
+              <a
+                href="https://www.instagram.com/p/DL-VNbpIxBI/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-400 hover:bg-gold hover:text-navy transition-all"
+                aria-label="Instagram"
+              >
+                <FiInstagram size={20} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-400 hover:bg-gold hover:text-navy transition-all">
-                in
+              <a
+                href="https://web.facebook.com/p/Global-Somali-Enterpreneurship-Forum-61561362166024/?_rdc=1&_rdr#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-400 hover:bg-gold hover:text-navy transition-all"
+                aria-label="Facebook"
+              >
+                <FiFacebook size={20} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-400 hover:bg-gold hover:text-navy transition-all">
-                f
+              <a
+                href="https://www.linkedin.com/in/global-somali-entrepreneurship-forum-a45227326/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-400 hover:bg-gold hover:text-navy transition-all"
+                aria-label="LinkedIn"
+              >
+                <FiLinkedin size={20} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-400 hover:bg-gold hover:text-navy transition-all">
-                ig
+              <a
+                href="https://gsef.co.ke/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-400 hover:bg-gold hover:text-navy transition-all"
+                aria-label="Website"
+              >
+                <FiGlobe size={20} />
               </a>
             </div>
             <div className="mt-6">
-              <h5 className="font-body text-[14px] font-semibold text-white mb-2">Subscribe to Newsletter</h5>
-              <div className="flex">
-                <input type="email" placeholder="Your email" className="bg-white/10 border border-white/20 rounded-l-lg px-4 py-2 font-body text-sm text-white w-full focus:outline-none focus:border-green" />
-                <button className="bg-green hover:bg-green-light text-white px-4 py-2 rounded-r-lg font-body text-sm font-semibold transition-colors">→</button>
+              <h5 className="font-body text-[14px] font-semibold text-white mb-2">Follow our websites</h5>
+              <div className="space-y-2 text-sm text-gray-300">
+                <a href="https://gsef.co.ke/" target="_blank" rel="noopener noreferrer" className="block hover:text-white transition-colors">Official GSEF site</a>
+                <a href="https://gsef.hustlesasa.shop/" target="_blank" rel="noopener noreferrer" className="block hover:text-white transition-colors">Hustlesasa shop site</a>
               </div>
             </div>
           </div>

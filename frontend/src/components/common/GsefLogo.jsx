@@ -24,15 +24,23 @@ export default function GsefLogo({
       : 'text-gray-500';
   const iconSize = size || (compact ? 36 : 44);
 
+  const logoSrc = '/images/logo.jpeg';
+  const fallbackLogo = '/images/logo.jpeg';
+
   const content = (
     <>
-      <img 
-        src="/images/gsef-logo.png" 
-        alt="GSEF Logo" 
+      <img
+        src={logoSrc}
+        alt="GSEF Logo"
         width={iconSize}
         height={iconSize}
-        className="shrink-0 object-contain drop-shadow-sm" 
+        className="shrink-0 object-contain drop-shadow-sm"
         style={{ width: iconSize, height: iconSize }}
+        onError={(event) => {
+          if (event.target.src !== fallbackLogo) {
+            event.target.src = fallbackLogo;
+          }
+        }}
       />
       <div className="leading-tight min-w-0 text-left">
         <span className={`block font-display font-bold tracking-tight ${compact ? 'text-lg' : 'text-xl'} ${titleClass}`}>

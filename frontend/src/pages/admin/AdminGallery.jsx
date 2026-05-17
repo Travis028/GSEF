@@ -1,16 +1,24 @@
 import React, { useMemo } from 'react';
-import galleryFilenames from '../../data/galleryManifest.json';
+
+const galleryAssets = [
+  { label: 'gsef-vip-hero', url: '/images/gsef-vip-hero.png' },
+  { label: 'whatsapp-1', url: '/images/whatsapp/whatsapp-2026-05-14-4-53-45-00.jpeg' },
+  { label: 'whatsapp-2', url: '/images/whatsapp/whatsapp-2026-05-14-4-53-45-01.jpeg' },
+  { label: 'whatsapp-3', url: '/images/whatsapp/whatsapp-2026-05-14-4-53-45-02.jpeg' },
+  { label: 'whatsapp-4', url: '/images/whatsapp/whatsapp-2026-05-14-4-53-45-03.jpeg' },
+  { label: 'whatsapp-5', url: '/images/whatsapp/whatsapp-2026-05-14-4-53-45-04.jpeg' },
+];
 
 const AdminGallery = () => {
-  const rows = useMemo(() => galleryFilenames.slice(0, 12), []);
+  const rows = useMemo(() => galleryAssets.slice(0, 12), []);
 
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
         <div>
-          <h2 className="text-xl sm:text-2xl font-bold text-gsef-navy">Gallery</h2>
+          <h2 className="text-xl sm:text-2xl font-bold text-gsef-navy">Gallery Assets</h2>
           <p className="text-sm text-slate-600 mt-1">
-            Total assets: <span className="font-mono font-bold text-gsef-teal">{galleryFilenames.length}</span>
+            Total assets: <span className="font-mono font-bold text-gsef-teal">{galleryAssets.length}</span>
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -34,10 +42,10 @@ const AdminGallery = () => {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
-              {rows.map((f) => (
-                <tr key={f} className="hover:bg-slate-50/70">
-                  <td className="px-4 py-3 font-mono text-xs text-slate-700 max-w-[260px] truncate">{f}</td>
-                  <td className="px-4 py-3 font-mono text-xs text-gsef-teal truncate">{`/gallery/${f}`}</td>
+              {rows.map((asset) => (
+                <tr key={asset.label} className="hover:bg-slate-50/70">
+                  <td className="px-4 py-3 font-mono text-xs text-slate-700 max-w-[260px] truncate">{asset.label}</td>
+                  <td className="px-4 py-3 font-mono text-xs text-gsef-teal break-all">{asset.url}</td>
                   <td className="px-4 py-3 text-right whitespace-nowrap">
                     <button type="button" className="text-xs font-bold text-slate-500 hover:text-gsef-purple">
                       Edit

@@ -2,130 +2,163 @@ import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { FiCheckCircle } from 'react-icons/fi';
 
+const steps = ['Ticket', 'Details', 'Review', 'Payment'];
+
 const Registration = () => {
   const { id } = useParams();
   const [step, setStep] = useState(1);
 
-  const nextStep = (e) => {
-    e.preventDefault();
-    setStep(step + 1);
+  const nextStep = (event) => {
+    event.preventDefault();
+    setStep((current) => Math.min(current + 1, steps.length));
   };
 
+  const prevStep = () => setStep((current) => Math.max(current - 1, 1));
+
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-3xl mx-auto px-4">
-        
-        {/* Progress Bar */}
-        <div className="mb-8">
-          <div className="flex items-center justify-between relative">
-            <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-full h-1 bg-gray-200 z-0"></div>
-            <div className={`absolute left-0 top-1/2 transform -translate-y-1/2 h-1 bg-blue-600 z-0 transition-all duration-300 ${step === 1 ? 'w-1/4' : step === 2 ? 'w-2/4' : step === 3 ? 'w-3/4' : 'w-full'}`}></div>
-            
-            <div className={`relative z-10 w-8 h-8 rounded-full flex items-center justify-center font-bold ${step >= 1 ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-500'}`}>1</div>
-            <div className={`relative z-10 w-8 h-8 rounded-full flex items-center justify-center font-bold ${step >= 2 ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-500'}`}>2</div>
-            <div className={`relative z-10 w-8 h-8 rounded-full flex items-center justify-center font-bold ${step >= 3 ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-500'}`}>3</div>
-            <div className={`relative z-10 w-8 h-8 rounded-full flex items-center justify-center font-bold ${step >= 4 ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-500'}`}>4</div>
-          </div>
-          <div className="flex justify-between mt-2 text-xs text-gray-500 font-medium">
-            <span>Ticket</span>
-            <span>Details</span>
-            <span>Review</span>
-            <span>Payment</span>
-          </div>
-        </div>
-
-        <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-8">
-          {step === 1 && (
-            <div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-6">Select Your Ticket</h2>
-              <div className="space-y-4">
-                <label className="block border-2 border-blue-500 rounded-lg p-4 cursor-pointer hover:bg-blue-50 transition">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <input type="radio" name="ticket" className="mr-3 text-blue-600 focus:ring-blue-500" defaultChecked />
-                      <span className="font-bold text-gray-800">Regular Pass</span>
-                    </div>
-                    <span className="text-xl font-bold text-blue-600">KES 3,000</span>
+    <div className="min-h-screen bg-offwhite py-16">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <div className="rounded-[2rem] bg-white shadow-2xl border border-slate-200 overflow-hidden">
+          <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
+            <div className="relative px-8 py-10 sm:px-12 sm:py-14 bg-gradient-to-br from-gsef-navy to-gsef-purple text-white">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.18),_transparent_40%)]" />
+              <div className="relative space-y-6">
+                <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.28em] font-semibold text-gsef-teal">
+                  Registration flow
+                </span>
+                <h1 className="text-4xl sm:text-5xl font-bold leading-tight">Secure your place at GSEF 2026</h1>
+                <p className="max-w-xl text-slate-200/90 leading-8">
+                  Fast, modern registration with clear progress, brand-led colors, and a polished step-by-step experience.
+                </p>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-3xl border border-white/10 bg-white/10 p-4">
+                    <p className="text-sm text-slate-200/80">Event</p>
+                    <p className="mt-2 font-semibold text-white">GSEF 2026 Summit</p>
                   </div>
-                </label>
-                <label className="block border border-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-50 transition">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <input type="radio" name="ticket" className="mr-3 text-blue-600 focus:ring-blue-500" />
-                      <span className="font-bold text-gray-800">VIP Pass</span>
-                    </div>
-                    <span className="text-xl font-bold text-gray-700">KES 10,000</span>
+                  <div className="rounded-3xl border border-white/10 bg-white/10 p-4">
+                    <p className="text-sm text-slate-200/80">Reference</p>
+                    <p className="mt-2 font-semibold text-white">{id || 'REG-2026-01'}</p>
                   </div>
-                </label>
-              </div>
-              <div className="mt-8 flex justify-end">
-                <button onClick={nextStep} className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition">Continue</button>
+                </div>
               </div>
             </div>
-          )}
 
-          {step === 2 && (
-            <form onSubmit={nextStep}>
-              <h2 className="text-2xl font-bold text-gray-800 mb-6">Attendee Information</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
-                  <input type="text" required className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" />
+            <div className="px-8 py-10 sm:px-12 sm:py-14">
+              <div className="mb-10">
+                <div className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.24em] text-gsef-teal">
+                  <span className="h-2 w-2 rounded-full bg-gsef-teal" /> Step {step} of {steps.length}
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
-                  <input type="text" required className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" />
-                </div>
-                <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                  <input type="email" required className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" />
-                </div>
-                <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Company / Organization</label>
-                  <input type="text" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" />
+                <div className="mt-4 flex items-center gap-3 overflow-x-auto pb-2">
+                  {steps.map((label, index) => {
+                    const stepIndex = index + 1;
+                    const active = stepIndex === step;
+                    const done = stepIndex < step;
+                    return (
+                      <div key={label} className="flex items-center gap-3">
+                        <div className={`flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold ${done ? 'bg-gsef-teal text-white' : active ? 'bg-gsef-green text-white shadow-lg' : 'bg-slate-100 text-slate-500'}`}>
+                          {stepIndex}
+                        </div>
+                        <div className="min-w-[90px]">
+                          <p className={`text-xs uppercase tracking-[0.2em] ${active ? 'text-gsef-navy' : 'text-slate-400'}`}>{label}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
-              <div className="mt-8 flex justify-between">
-                <button type="button" onClick={() => setStep(1)} className="text-gray-600 hover:text-gray-900 px-4 py-2 font-medium">Back</button>
-                <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition">Continue</button>
-              </div>
-            </form>
-          )}
 
-          {step === 3 && (
-            <div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-6">Review Order</h2>
-              <div className="bg-gray-50 p-6 rounded-lg mb-6 border border-gray-200">
-                <div className="flex justify-between items-center border-b border-gray-200 pb-4 mb-4">
+              <div className="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-sm">
+                {step === 1 && (
                   <div>
-                    <h3 className="font-bold text-gray-900">GSEF 2026 Summit</h3>
-                    <p className="text-sm text-gray-500">Regular Pass x 1</p>
+                    <h2 className="text-2xl font-bold text-slate-900 mb-6">Choose the right ticket</h2>
+                    <div className="space-y-4">
+                      <label className="relative flex cursor-pointer flex-col overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 p-5 transition hover:shadow-lg">
+                        <input type="radio" name="ticket" defaultChecked className="peer sr-only" />
+                        <div className="flex items-center justify-between gap-4">
+                          <div>
+                            <p className="text-lg font-semibold text-slate-900">Standard Pass</p>
+                            <p className="text-sm text-slate-500 mt-2">Full access to sessions, networking lounge, and digital materials.</p>
+                          </div>
+                          <span className="text-xl font-bold text-gsef-navy">KES 3,000</span>
+                        </div>
+                        <div className="mt-4 text-sm text-slate-600">Best for new founders and growth stage startups.</div>
+                      </label>
+                      <label className="relative flex cursor-pointer flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white p-5 transition hover:shadow-lg">
+                        <input type="radio" name="ticket" className="peer sr-only" />
+                        <div className="flex items-center justify-between gap-4">
+                          <div>
+                            <p className="text-lg font-semibold text-slate-900">VIP Pass</p>
+                            <p className="text-sm text-slate-500 mt-2">Priority seating, speaker lounge access, and VIP networking dinner.</p>
+                          </div>
+                          <span className="text-xl font-bold text-gsef-gold">KES 10,000</span>
+                        </div>
+                        <div className="mt-4 text-sm text-slate-600">Perfect for partners and corporate guests.</div>
+                      </label>
+                    </div>
                   </div>
-                  <div className="font-bold text-gray-900">KES 3,000</div>
-                </div>
-                <div className="flex justify-between items-center pt-2">
-                  <span className="font-bold text-lg text-gray-900">Total</span>
-                  <span className="font-bold text-2xl text-blue-600">KES 3,000</span>
-                </div>
-              </div>
-              <div className="mt-8 flex justify-between">
-                <button type="button" onClick={() => setStep(2)} className="text-gray-600 hover:text-gray-900 px-4 py-2 font-medium">Back</button>
-                <button onClick={nextStep} className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition">Proceed to Payment</button>
+                )}
+
+                {step === 2 && (
+                  <form onSubmit={nextStep} className="space-y-6">
+                    <div>
+                      <h2 className="text-2xl font-bold text-slate-900 mb-4">Attendee details</h2>
+                      <p className="text-sm text-slate-500">Use the same email that will receive your ticket and updates.</p>
+                    </div>
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      {['First Name', 'Last Name', 'Email Address', 'Organization'].map((label) => (
+                        <label key={label} className="block text-sm font-medium text-slate-700">
+                          <span>{label}</span>
+                          <input type={label.includes('Email') ? 'email' : 'text'} required className="mt-2 w-full rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 focus:border-gsef-green focus:ring-2 focus:ring-gsef-green/20" />
+                        </label>
+                      ))}
+                    </div>
+                    <div className="flex justify-between gap-4 pt-2">
+                      <button type="button" onClick={prevStep} className="rounded-3xl border border-slate-200 px-6 py-3 text-slate-700 transition hover:bg-slate-100">Back</button>
+                      <button type="submit" className="rounded-3xl bg-gsef-green px-6 py-3 font-semibold text-white shadow-lg shadow-gsef-green/20 transition hover:bg-gsef-green-dark">Continue</button>
+                    </div>
+                  </form>
+                )}
+
+                {step === 3 && (
+                  <div>
+                    <h2 className="text-2xl font-bold text-slate-900 mb-6">Review your registration</h2>
+                    <div className="space-y-5 rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
+                      <div className="flex justify-between items-start gap-4">
+                        <div>
+                          <p className="text-sm uppercase tracking-[0.18em] text-slate-500">Ticket</p>
+                          <p className="mt-2 font-semibold text-slate-900">Standard Pass</p>
+                        </div>
+                        <span className="rounded-full bg-gsef-green/10 px-4 py-2 text-sm font-semibold text-gsef-green">Confirmed</span>
+                      </div>
+                      <div className="flex flex-col gap-3 text-sm text-slate-600">
+                        <p>Full access to all sessions, workshops, peer networking and summit materials.</p>
+                        <p>Preferred email: example@domain.com</p>
+                      </div>
+                      <div className="flex items-center justify-between border-t border-slate-200 pt-4">
+                        <span className="font-medium text-slate-700">Total</span>
+                        <span className="text-2xl font-bold text-gsef-navy">KES 3,000</span>
+                      </div>
+                    </div>
+                    <div className="mt-8 flex justify-between gap-4">
+                      <button type="button" onClick={prevStep} className="rounded-3xl border border-slate-200 px-6 py-3 text-slate-700 transition hover:bg-slate-100">Back</button>
+                      <button onClick={nextStep} className="rounded-3xl bg-gsef-gold px-6 py-3 font-semibold text-slate-900 shadow-lg shadow-gsef-gold/30 transition hover:bg-gsef-gold-dark">Proceed to Payment</button>
+                    </div>
+                  </div>
+                )}
+
+                {step === 4 && (
+                  <div className="text-center py-10">
+                    <FiCheckCircle className="mx-auto mb-6 text-gsef-green" size={68} />
+                    <h2 className="text-3xl font-bold text-slate-900 mb-3">Registration complete</h2>
+                    <p className="max-w-xl mx-auto text-slate-600 leading-7 mb-8">Your ticket has been successfully issued. Check your inbox for confirmation and next-step details.</p>
+                    <Link to="/dashboard" className="inline-flex items-center justify-center rounded-full bg-gsef-green px-8 py-3.5 text-base font-semibold text-white shadow-xl shadow-gsef-green/25 transition hover:bg-gsef-green-dark">
+                      Go to Dashboard
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
-          )}
-
-          {step === 4 && (
-            <div className="text-center py-8">
-              <FiCheckCircle className="mx-auto text-green-500 mb-4" size={64} />
-              <h2 className="text-2xl font-bold text-gray-800 mb-2">Registration Complete!</h2>
-              <p className="text-gray-600 mb-8">Thank you for registering. We have sent your ticket to your email.</p>
-              <Link to="/dashboard" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition inline-block">
-                Go to Dashboard
-              </Link>
-            </div>
-          )}
-
+          </div>
         </div>
       </div>
     </div>
